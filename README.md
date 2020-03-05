@@ -1,1 +1,2 @@
 # tameraktasTU.github.io
+.gitignore
