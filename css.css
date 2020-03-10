@@ -1,8 +1,17 @@
 .maps {
-    position: fixed;
-    width: 85.5%;
-    height: 98%;
-    left: 215px;
+  position: absolute;
+  display: table;
+  margin: 0 auto;
+  height: 98%;
+  width: 85.5%;
+  left: 215px;
+}
+
+.ammo {
+  display: table;
+  margin: 0 auto;
+  height: 100%;
+  left: 215px;
 }
 
 .sidebar {
