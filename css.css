@@ -1,7 +1,5 @@
 .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
+  width: 12.5em;
   background-color: #757575;
   position: fixed;
   height: 98%;
@@ -12,7 +10,7 @@
 .sidebar a {
   display: block;
   color: #FAFAFA;
-  padding: 16px;
+  padding: 15px;
   text-decoration: none;
 }
   
@@ -27,9 +25,9 @@
 }
   
 div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
+  margin-left: 20%;
+  padding: 1px 15px;
+  height: 98%;
 }
   
 @media screen and (max-width: 700px) {
@@ -61,7 +59,7 @@ div.content {
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  line-height: 1.42em;
+  line-height: 1.4em;
   color: #FAFAFA;
   background-color:#3D4849;
 }
@@ -102,16 +100,14 @@ h2 a {
 .container td {
 	font-weight: normal;
 	font-size: 1.5em;
-  
 }
 
 .container {
 	text-align: left;
 	overflow: hidden;
 	width: 80%;
-	margin-left: 14%;
+	margin-left: 12.5%;
   display: table;
-  padding: 0 0 8em 0;
 }
 
 .container td, .container th {
@@ -151,22 +147,14 @@ h2 a {
   transition-timing-function: line;
 }
 
-@media (max-width: 800px) {
-  .container td:nth-child(4),
-  .container th:nth-child(4) { display: none; }
-}
-
 /* Google Maps */
 
 .gmap_canvas {
   overflow: hidden;
-  height: 97%;
-  width: ;
+  border-radius: 15px;
 }
 
 .mapouter {
   text-align: right;
-  height: 1080px;
-  width: 1080px;
-  margin-left: 28%;
+  margin-left: 12.5%;
 }
