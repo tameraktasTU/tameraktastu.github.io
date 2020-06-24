@@ -107,7 +107,7 @@ h2 a {
 
 .container {
 	text-align: left;
-	overflow-x: scroll;
+	overflow: hidden;
 	width: 80%;
 	margin-left: 14%;
   display: table;
@@ -161,7 +161,7 @@ h2 a {
 .gmap_canvas {
   overflow: hidden;
   height: 97%;
-  width: 97%;
+  width: ;
 }
 
 .mapouter {
