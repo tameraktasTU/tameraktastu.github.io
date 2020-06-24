@@ -17,8 +17,10 @@
 	</div>
 
 	<h1>Fahrtenbuch von Tamer Aktas</h1>
+	<h3 id="valKM"></h3>
+	<h3 id="valFahrt"></h3>
 
-	<table class="container">
+	<table id="table" class="container">
 		<thead>
 			<tr>
 				<th>
@@ -170,5 +172,19 @@
 			</tr>
 		</tbody>
 	</table>
+
+	<script>
+
+		var table = document.getElementById("table"), sumKM = 0, sumFahrt = 0;
+
+		for (var i = 1; i < table.rows.length; i++) {
+			sumKM = sumKM + parseInt(table.rows[i].cells[3].innerHTML);
+			sumFahrt++;
+		}
+
+		document.getElementById("valKM").innerHTML = "Gefahrene Kilometer: " + sumKM + " Kilometer";
+		document.getElementById("valFahrt").innerHTML = "Gefahrene Fahrten: " + sumFahrt;
+
+	</script>
 
 </body>

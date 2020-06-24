@@ -77,6 +77,14 @@ h2 {
   color: #FAFAFA;
 }
 
+h3 {
+  font-size: 2em; 
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: #ffffff;
+}
+
 h2 a {
   font-weight: 700;
   text-transform: uppercase;
