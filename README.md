@@ -1,5 +1,7 @@
 # tameraktastu.github.io
 
-Kleines Persönliches Projekt 
+Persönliches Projekt
+Fahrtenbuch um die gefahrenen Kilometer zu dokumentieren und zu visualisieren
+mit Hilfe der API von Google Maps.
 
-Fahrtenbuch 
+Daten können abweichen.
