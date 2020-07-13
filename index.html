@@ -19,6 +19,7 @@
 	<h1>Fahrtenbuch</h1>
 	<h3 id="valKM"></h3>
 	<h3 id="valFahrt"></h3>
+	<h3 id="valErdeUmfang"></h3>
 
 	<table id="table" class="container">
 		<thead>
@@ -238,6 +239,7 @@
 
 		document.getElementById("valKM").innerHTML = "Gefahrene Kilometer: " + sumKM + " Kilometer";
 		document.getElementById("valFahrt").innerHTML = "Gefahrene Fahrten: " + sumFahrt;
+		document.getElementById("valErdeUmfang").innerHTML = "Anzahl Erdumrundungen: " + Math.round((sumKM / 40075.017) * 100) / 100;
 
 	</script>
 
