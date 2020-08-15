@@ -25,19 +25,19 @@ h2 {
   color: #FAFAFA;
 }
 
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FAFAFA;
+  text-decoration: none;
+}
+
 h3 {
   font-size: 2em; 
   font-weight: 300;
   line-height: 1em;
   text-align: center;
   color: #ffffff;
-}
-
-h2 a {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #FAFAFA;
-  text-decoration: none;
 }
 
 .container {
@@ -48,16 +48,20 @@ h2 a {
   display: table;
 }
 
+.container td {
+	font-weight: normal;
+	font-size: 1.5em;
+}
+
+.container th {
+  background-color: #212121;
+}
+
 .container th h1 {
   font-weight: bold;
 	font-size: 1.5em;
   text-align: left;
   color: #FAFAFA;
-}
-
-.container td {
-	font-weight: normal;
-	font-size: 1.5em;
 }
 
 .container td, .container th {
@@ -74,10 +78,6 @@ h2 a {
 /* Background-color of the even rows */
 .container tr:nth-child(even) {
 	background-color: #9E9E9E;
-}
-
-.container th {
-  background-color: #212121;
 }
 
 .container td:first-child { 
