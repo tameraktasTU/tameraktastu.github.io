@@ -1,3 +1,5 @@
+/* General */
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -40,12 +42,16 @@ h3 {
   color: #ffffff;
 }
 
+/* Navigation Bar */
+
+/* Table */
+
 .container {
 	text-align: left;
 	overflow: hidden;
 	width: 80%;
 	margin-left: 10%;
-  display: table;
+  display: table;s
 }
 
 .container td {
