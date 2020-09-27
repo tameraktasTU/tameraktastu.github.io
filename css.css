@@ -44,6 +44,7 @@ hr {
   width: 79.8%;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+  border-color: #212121;
 }
 
 /* Table */
@@ -92,21 +93,8 @@ hr {
   color: #FAFAFA; 
 }
 
-.container tr:hover {
-  background-color: #464A52;
-}
-
-.container td:hover {
-  background-color: #FFF842;
-  color: #403E10;
-  transition-delay: 0s;
-	transition-duration: 0.4s;
-	transition-property: all;
-  transition-timing-function: line;
-}
-
 .footer {
-  width: 100%;
-  text-align: left;
-  margin-left: 10.1%;
+  width: 90%;
+  text-align: right;
+  color: #FAFAFA;
 }
