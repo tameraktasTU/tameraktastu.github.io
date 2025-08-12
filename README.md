@@ -1,7 +1,7 @@
 # tameraktastu.github.io
 
-Personal Project
+Personal project to track and visualize driven distances (Fahrtenbuch).
 
-Tracking driven distance as transport driver
-
-Basic HTML, CSS, JS
+## Tech stack
+- HTML + Vanilla JS
+- TailwindCSS + DaisyUI

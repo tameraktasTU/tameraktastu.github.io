@@ -1,740 +1,243 @@
-<head>
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Fahrtenbuch</title>
+		<meta name="description" content="Fahrtenbuch" />
+		<meta name="author" content="Tamer Aktas" />
+		<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2214%22%20fill%3D%22%2310b981%22/%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%225%22%20fill%3D%22%23ffffff%22/%3E%3Cpath%20d%3D%22M16%204a12%2012%200%200%201%2012%2012H4A12%2012%200%200%201%2016%204Z%22%20fill%3D%22%23ffffff%22/%3E%3Cpath%20d%3D%22M10%2024l6-3%206%203%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E" />
 
-	<meta charset="utf-8">
-	<title>Fahrtenbuch</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Fahrtenbuch">
-	<meta name="author" content="Tamer Aktas">
-	<link rel="stylesheet" type="text/css" href="css.css">
-	<link rel="Icon" type="png" href="car.png">
+		<script src="tailwind.config.js"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+			rel="stylesheet"
+		/>
+		<style>
+			html[data-theme="dark"] { --bc: 92% 0 0; }
+		</style>
+	</head>
+	<body class="min-h-screen bg-base-200 font-display text-base-content">
+		<header class="navbar bg-base-100/80 backdrop-blur border-b border-base-200 sticky top-0 z-50">
+			<div class="navbar-start"></div>
+			<div class="navbar-center">
+				<a href="#" class="btn btn-ghost gap-3 normal-case text-xl">
+					<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+						<circle cx="12" cy="12" r="9" stroke-width="2"/>
+						<circle cx="12" cy="12" r="3" stroke-width="2"/>
+						<path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z" stroke-width="2"/>
+						<path d="M7 18l5-3 5 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					Fahrtenbuch
+				</a>
+			</div>
+			<div class="navbar-end pr-2 sm:pr-4">
+				<label class="swap swap-rotate cursor-pointer" aria-label="Theme umschalten">
+					<input id="themeToggle" type="checkbox" />
+					<svg class="swap-off w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.64 5.64l1.42 1.42M16.94 16.94l1.42 1.42M5.64 18.36l1.42-1.42M16.94 7.06l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+					<svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
+				</label>
+			</div>
+		</header>
 
-</head>
+		<section class="relative bg-hero">
+			<div class="max-w-6xl mx-auto px-4 py-4 sm:py-6">
+				<div class="hero min-h-[8rem] sm:min-h-[10rem] bg-base-100/60 rounded-2xl shadow-sm border border-base-200">
+					<div class="hero-content text-center">
+						<div class="max-w-2xl">
+							<h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+								Fahrtenbuch Übersicht
+							</h1>
+							<p class="py-4 text-base-content/70">
+								Kompakte Zusammenfassung aller Fahrten inklusive Kilometer- und Fahrtenanzahl.
+							</p>
+							<div class="flex flex-col sm:flex-row gap-3 justify-center">
+								<a href="#tabelle" class="btn btn-primary">Zur Tabelle</a>
+								<a href="#statistik" class="btn btn-outline">Zur Statistik</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-<body>
+		<section id="statistik" class="max-w-6xl mx-auto px-4 py-4 sm:py-6">
+			<div class="stats stats-vertical lg:stats-horizontal shadow bg-base-100 border border-base-200 w-full">
+				<div class="stat">
+					<div class="stat-figure text-primary">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="inline-block w-8 h-8 stroke-current">
+							<path d="M4 21l5-18" stroke-width="2" stroke-linecap="round"/>
+							<path d="M20 21l-5-18" stroke-width="2" stroke-linecap="round"/>
+							<path d="M12 3v4M12 11v4M12 19v2" stroke-width="2" stroke-linecap="round"/>
+						</svg>
+					</div>
+					<div class="stat-title">Gefahrene Kilometer</div>
+					<div id="valKM" class="stat-value">0 km</div>
+					<div class="stat-desc">Summe aller Fahrten</div>
+				</div>
 
-	<h1>Fahrtenbuch</h1>
-	<h3 id="valKM"></h3>
-	<h3 id="valFahrt"></h3>
+				<div class="stat">
+					<div class="stat-figure text-secondary">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="inline-block w-8 h-8 stroke-current">
+							<circle cx="8" cy="7" r="2" stroke-width="2"/>
+							<circle cx="16" cy="17" r="2" stroke-width="2"/>
+							<path d="M8 9v2a4 4 0 004 4h 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</div>
+					<div class="stat-title">Gefahrene Fahrten</div>
+					<div id="valFahrt" class="stat-value">0</div>
+					<div class="stat-desc">Anzahl der Zeilen</div>
+				</div>
 
-	<table id="table" class="container">
-		<thead>
-			<tr>
-				<th>
-					<h1>Datum</h1>
-				</th>
-				<th>
-					<h1>Fahrtstrecke</h1>
-				</th>
-				<th>
-					<h1>KFZ</h1>
-				</th>
-				<th>
-					<h1>Strecke (in KM)</h1>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>03.04.2020</td>
-				<td>Bad Camberg - Berlin</td>
-				<td>Skoda Yeti</td>
-				<td>542</td>
-			</tr>
-			<tr>
-				<td>07.04.2020</td>
-				<td>Kirchheim unter Teck - Berlin</td>
-				<td>Jeep</td>
-				<td>664</td>
-			</tr>
-			<tr>
-				<td>09.04.2020</td>
-				<td>Mühlheim am Main - Berlin</td>
-				<td>BMW 528i</td>
-				<td>535</td>
-			</tr>
-			<tr>
-				<td>18.04.2020</td>
-				<td>Hanau - Berlin</td>
-				<td>Kia Sportage</td>
-				<td>534</td>
-			</tr>
-			<tr>
-				<td>21.04.2020</td>
-				<td>Berlin - Speichersdorf</td>
-				<td>Mercedes Viano</td>
-				<td>363</td>
-			</tr>
-			<tr>
-				<td>22.04.2020</td>
-				<td>Saarbrücken - Berlin</td>
-				<td>Peugeot 3008</td>
-				<td>710</td>
-			</tr>
-			<tr>
-				<td>24.04.2020</td>
-				<td>Stuttgart - Berlin</td>
-				<td>BMW 320i</td>
-				<td>633</td>
-			</tr>
-			<tr>
-				<td>09.05.2020</td>
-				<td>Weinheim - Berlin</td>
-				<td>Jeep</td>
-				<td>604</td>
-			</tr>
-			<tr>
-				<td>12.05.2020</td>
-				<td>Kiel - Hamburg - Berlin</td>
-				<td>GLC 350d</td>
-				<td>403</td>
-			</tr>
-			<tr>
-				<td>14.05.2020</td>
-				<td>Marl - Berlin</td>
-				<td>VW Amarok</td>
-				<td>522</td>
-			</tr>
-			<tr>
-				<td>25.05.2020</td>
-				<td>Hamburg - Berlin</td>
-				<td>Opel Insignia</td>
-				<td>292</td>
-			</tr>
-			<tr>
-				<td>27.05.2020</td>
-				<td>Berlin - Parchim - Berlin</td>
-				<td>Jeep / VW Variant</td>
-				<td>329</td>
-			</tr>
-			<tr>
-				<td>04.06.2020</td>
-				<td>Höchstenbach - Berlin</td>
-				<td>Suzuki Kisashi</td>
-				<td>567</td>
-			</tr>
-			<tr>
-				<td>05.06.2020</td>
-				<td>Maintal - Berlin</td>
-				<td>Skoda Superb</td>
-				<td>539</td>
-			</tr>
-			<tr>
-				<td>08.06.2020</td>
-				<td>Berlin - Bochum - Menden - Berlin</td>
-				<td>Ford S-Max / Peugeot / Kia Optima</td>
-				<td>1046</td>
-			</tr>
-			<tr>
-				<td>10.06.2020</td>
-				<td>Kirchheim unter Teck - Berlin</td>
-				<td>Unbekannt</td>
-				<td>664</td>
-			</tr>
-			<tr>
-				<td>13.06.2020</td>
-				<td>Honhardt-Frankenhardt - Berlin</td>
-				<td>Chevrolet Orlando</td>
-				<td>529</td>
-			</tr>
-			<tr>
-				<td>15.06.2020</td>
-				<td>Neuss - Berlin</td>
-				<td>Peugeot 207</td>
-				<td>553</td>
-			</tr>
-			<tr>
-				<td>17.06.2020</td>
-				<td>Wald-Michelbach - Berlin</td>
-				<td>Ford Kuga</td>
-				<td>614</td>
-			</tr>
-			<tr>
-				<td>19.06.2020</td>
-				<td>Meiningen - Berlin</td>
-				<td>Ford S-Max</td>
-				<td>370</td>
-			</tr>
-			<tr>
-				<td>22.06.2020</td>
-				<td>Petersberg - Berlin</td>
-				<td>VW Passat</td>
-				<td>149</td>
-			</tr>
-			<tr>
-				<td>24.06.2020</td>
-				<td>Berlin - Fredenbeck - Berlin</td>
-				<td>VW Amarok / Ford Ranger</td>
-				<td>731</td>
-			</tr>
-			<tr>
-				<td>26.06.2020</td>
-				<td>Kirchheim unter Teck - Berlin</td>
-				<td>Ford Galaxy</td>
-				<td>664</td>
-			</tr>
-			<tr>
-				<td>27.06.2020</td>
-				<td>Berlin - Kitzscher</td>
-				<td>Kia Sportage</td>
-				<td>213</td>
-			</tr>
-			<tr>
-				<td>01.07.2020</td>
-				<td>Heidenheim - Berlin</td>
-				<td>Opel Insignia</td>
-				<td>569</td>
-			</tr>
-			<tr>
-				<td>02.07.2020</td>
-				<td>Bockel - Berlin</td>
-				<td>VW Passat Variant</td>
-				<td>364</td>
-			</tr>
-			<tr>
-				<td>03.07.2020</td>
-				<td>Berlin - Mittweida - Berlin</td>
-				<td>Suzuki Kisashi / Renault Koleos</td>
-				<td>498</td>
-			</tr>
-			<tr>
-				<td>06.07.2020</td>
-				<td>Fuldatal - Berlin</td>
-				<td>VW Beetle</td>
-				<td>373</td>
-			</tr>
-			<tr>
-				<td>07.07.2020</td>
-				<td>Hamburg - Berlin</td>
-				<td>VW Passat Variant</td>
-				<td>281</td>
-			</tr>
-			<tr>
-				<td>07.07.2020</td>
-				<td>Berlin - Worms - Idstein - Frankfurt - Freiburg - Berlin</td>
-				<td>VW Polo / Skoda Superb</td>
-				<td>1799</td>
-			</tr>
-			<tr>
-				<td>13.07.2020</td>
-				<td>Marl - Berlin</td>
-				<td>Opel Astra Sportstourer</td>
-				<td>519</td>
-			</tr>
-			<tr>
-				<td>14.07.2020</td>
-				<td>Wernigerode - Berlin</td>
-				<td>VW Passat</td>
-				<td>230</td>
-			</tr>
-			<tr>
-				<td>22.07.2020</td>
-				<td>Berlin - Wilsdruff - Berlin</td>
-				<td>Renault Espace / Audi A6</td>
-				<td>408</td>
-			</tr>
-			<tr>
-				<td>23.07.2020</td>
-				<td>Berlin - Wendeberg </td>
-				<td>Mercedes Sprinter</td>
-				<td>234</td>
-			</tr>
-			<tr>
-				<td>25.07.2020</td>
-				<td>Berlin - Frankfurt - Gelsenkrichen - Berlin</td>
-				<td>Mercedes GLC</td>
-				<td>1370</td>
-			</tr>
-			<tr>
-				<td>27.07.2020</td>
-				<td>Berlin - Moers - Berlin</td>
-				<td>Peugeot 207</td>
-				<td>824</td>
-			</tr>
-			<tr>
-				<td>04.08.2020</td>
-				<td>Emmering - Berlin</td>
-				<td>Skoda Superb</td>
-				<td>456</td>
-			</tr>
-			<tr>
-				<td>06.08.2020</td>
-				<td>Berlin - Barby</td>
-				<td>Mercedes Citan</td>
-				<td>161</td>
-			</tr>
-			<tr>
-				<td>07.08.2020</td>
-				<td>Berlin - Zernitz - Berlin</td>
-				<td>Audi A3 / VW Golf</td>
-				<td>214</td>
-			</tr>
-			<tr>
-				<td>11.08.2020</td>
-				<td>Hannover - Berlin</td>
-				<td>Suzuki Kizashi</td>
-				<td>282</td>
-			</tr>
-			<tr>
-				<td>13.08.2020</td>
-				<td>Kirchheim unter Teck - Berlin</td>
-				<td>Ford S-Max</td>
-				<td>657</td>
-			</tr>
-			<tr>
-				<td>17.08.2020</td>
-				<td>Emmering - Berlin</td>
-				<td>Mitsubishi Lancer</td>
-				<td>593</td>
-			</tr>
-			<tr>
-				<td>18.08.2020</td>
-				<td>Geisenheim - Berlin</td>
-				<td>BMW 320i Touring</td>
-				<td>583</td>
-			</tr>
-			<tr>
-				<td>20.08.2020</td>
-				<td>Wegberg - Berlin</td>
-				<td>Infinity QX70S</td>
-				<td>606</td>
-			</tr>
-			<tr>
-				<td>21.08.2020</td>
-				<td>Marl - Berlin</td>
-				<td>Opel Meriva</td>
-				<td>519</td>
-			</tr>
-			<tr>
-				<td>22.08.2020</td>
-				<td>Berlin - Greifswald</td>
-				<td>Subaru Forester</td>
-				<td>271</td>
-			</tr>
-			<tr>
-				<td>24.08.2020</td>
-				<td>Maulburg - Berlin</td>
-				<td>Lexus IS250</td>
-				<td>872</td>
-			</tr>
-			<tr>
-				<td>26.08.2020</td>
-				<td>Dormagen - Berlin</td>
-				<td>Ford S-Max</td>
-				<td>564</td>
-			</tr>
-			<tr>
-				<td>28.08.2020</td>
-				<td>Buch - Berlin</td>
-				<td>Hyundai ix35</td>
-				<td>677</td>
-			</tr>
-			<tr>
-				<td>02.09.2020</td>
-				<td>Berlin - Zeitz</td>
-				<td>Polo Plus</td>
-				<td>215</td>
-			</tr>
-			<tr>
-				<td>03.09.2020</td>
-				<td>Buch - Berlin</td>
-				<td>Kia Sorento</td>
-				<td>634</td>
-			</tr>
-			<tr>
-				<td>06.09.2020</td>
-				<td>Berlin - Hoyerswerda</td>
-				<td>Mercedes Sprinter</td>
-				<td>185</td>
-			</tr>
-			<tr>
-				<td>09.09.2020</td>
-				<td>Lüdersfeld - Berlin</td>
-				<td>Land Rover Discovery</td>
-				<td>325</td>
-			</tr>
-			<tr>
-				<td>16.09.2020</td>
-				<td>Lindau - Berlin</td>
-				<td>Renault Espace</td>
-				<td>725</td>
-			</tr>
-			<tr>
-				<td>21.09.2020</td>
-				<td>Neuss - Berlin</td>
-				<td>Jaguar XF</td>
-				<td>553</td>
-			</tr>
-			<tr>
-				<td>23.09.2020</td>
-				<td>Mönchengladbach - Berlin</td>
-				<td>Opel Insignia</td>
-				<td>539</td>
-			</tr>
-			<tr>
-				<td>30.09.2020</td>
-				<td>Hanau - Berlin</td>
-				<td>Chevrolet Captiva</td>
-				<td>532</td>
-			</tr>
-			<tr>
-				<td>01.10.2020</td>
-				<td>Berlin - Brüssel</td>
-				<td>Mini Countryman</td>
-				<td>766</td>
-			</tr>
-			<tr>
-				<td>02.10.2020</td>
-				<td>Wegberg - Berlin</td>
-				<td>Volvo XC70</td>
-				<td>606</td>
-			</tr>
-			<tr>
-				<td>06.10.2020</td>
-				<td>Hanau - Berlin</td>
-				<td>Honda Accord</td>
-				<td>532</td>
-			</tr>
-			<tr>
-				<td>14.10.2020</td>
-				<td>Zülpich - Berlin</td>
-				<td>Mercedes B200</td>
-				<td>601</td>
-			</tr>
-			<tr>
-				<td>15.10.2020</td>
-				<td>Hamburg - Berlin</td>
-				<td>Mercedes S450L</td>
-				<td>308</td>
-			</tr>
-			<tr>
-				<td>26.10.2020</td>
-				<td>Hemau - Berlin</td>
-				<td>Mazda 3</td>
-				<td>488</td>
-			</tr>
-			<tr>
-				<td>28.10.2020</td>
-				<td>Groß-Gerau - Berlin</td>
-				<td>VW Sharan</td>
-				<td>563</td>
-			</tr>
-			<tr>
-				<td>14.11.2020</td>
-				<td>Berlin - Prenzlau</td>
-				<td>VW Passat</td>
-				<td>142</td>
-			</tr>
-			<tr>
-				<td>15.11.2020</td>
-				<td>Berlin - Trier</td>
-				<td>Skoda Superb</td>
-				<td>718</td>
-			</tr>
-			<tr>
-				<td>17.11.2020</td>
-				<td>Neuss - Berlin</td>
-				<td>Jeep Compass</td>
-				<td>562</td>
-			</tr>
-			<tr>
-				<td>19.11.2020</td>
-				<td>Hamburg - Berlin</td>
-				<td>Volvo V70</td>
-				<td>320</td>
-			</tr>
-			<tr>
-				<td>24.11.2020</td>
-				<td>Hemau - Berlin</td>
-				<td>Ford S-Max</td>
-				<td>480</td>
-			</tr>
-			<tr>
-				<td>02.12.2020</td>
-				<td>Hanau - Berlin</td>
-				<td>BMW X1</td>
-				<td>535</td>
-			</tr>
-			<tr>
-				<td>04.12.2020</td>
-				<td>Erbach - Berlin</td>
-				<td>Ford S-Max</td>
-				<td>626</td>
-			</tr>
-			<tr>
-				<td>09.12.2020</td>
-				<td>Berlin - Melchow</td>
-				<td>Opel Astra</td>
-				<td>77</td>
-			</tr>
-			<tr>
-				<td>10.12.2020</td>
-				<td>Berlin - Salzwedel - Berlin</td>
-				<td>Fiat 500 / Smart</td>
-				<td>316</td>
-			</tr>
-			<tr>
-				<td>11.12.2020</td>
-				<td>Marl - Berlin</td>
-				<td>Ford S-Max</td>
-				<td>529</td>
-			</tr>
-			<tr>
-				<td>15.12.2020</td>
-				<td>Berlin - Altenkirchen</td>
-				<td>Ford Focus</td>
-				<td>583</td>
-			</tr>
-			<tr>
-				<td>16.12.2020</td>
-				<td>Illertissen - Berlin</td>
-				<td>Lexus IS250</td>
-				<td>634</td>
-			</tr>
-			<tr>
-				<td>17.12.2020</td>
-				<td>Hannover - Bielefeld - Berlin</td>
-				<td>Lexus RX450h</td>
-				<td>489</td>
-			</tr>
-			<tr>
-				<td>19.12.2020</td>
-				<td>Berlin - Neuruppin</td>
-				<td>Hyundai IX35</td>
-				<td>91</td>
-			</tr>
-			<tr>
-				<td>23.12.2020</td>
-				<td>Aalen - Berlin</td>
-				<td>VW Passat</td>
-				<td>534</td>
-			</tr>
-			<tr>
-				<td>06.01.2021</td>
-				<td>Lüdersfeld - Berlin</td>
-				<td>Volvo XC60</td>
-				<td>316</td>
-			</tr>
-			<tr>
-				<td>07.01.2021</td>
-				<td>Lüdersfeld - Berlin</td>
-				<td>Mitsubishi Outlander</td>
-				<td>658</td>
-			</tr>
-			<tr>
-				<td>18.01.2021</td>
-				<td>Bischofsheim - Berlin</td>
-				<td>VW Passat</td>
-				<td>571</td>
-			</tr>
-			<tr>
-				<td>19.01.2021</td>
-				<td>Mönchengladbach - Berlin</td>
-				<td>Mercedes B-Klasse</td>
-				<td>586</td>
-			</tr>
-			<tr>
-				<td>20.01.2021</td>
-				<td>Hamburg - Berlin</td>
-				<td>Mercedes B-Klasse</td>
-				<td>319</td>
-			</tr>
-			<tr>
-				<td>21.01.2021</td>
-				<td>Mönchengladbach - Berlin</td>
-				<td>Honda Accord</td>
-				<td>586</td>
-			</tr>
-			<tr>
-				<td>25.01.2021</td>
-				<td>Köln - Berlin</td>
-				<td>Kia Sorento</td>
-				<td>573</td>
-			</tr>
-			<tr>
-				<td>29.01.2021</td>
-				<td>Berlin - Peitz</td>
-				<td>Nissan Qashqai</td>
-				<td>147</td>
-			</tr>
-			<tr>
-				<td>02.02.2021</td>
-				<td>Berlin - Zörbig - Berlin - Ketzin - Berlin</td>
-				<td>Kia Sorento / Citroen C4</td>
-				<td>374</td>
-			</tr>
-			<tr>
-				<td>04.02.2021</td>
-				<td>Berlin - Magdeburg</td>
-				<td>Jeep Outlander</td>
-				<td>180</td>
-			</tr>
-			<tr>
-				<td>09.02.2021</td>
-				<td>Hanau - Berlin</td>
-				<td>Audi A4</td>
-				<td>552</td>
-			</tr>
-			<tr>
-				<td>11.02.2021</td>
-				<td>Ulm - Berlin</td>
-				<td>N/A</td>
-				<td>621</td>
-			</tr>
-			<tr>
-				<td>13.02.2021</td>
-				<td>Berlin - Peitz</td>
-				<td>N/A</td>
-				<td>147</td>
-			</tr>
-			<tr>
-				<td>15.02.2021</td>
-				<td>Berlin - Ueckermünde - Berlin</td>
-				<td>N/A</td>
-				<td>384</td>
-			</tr>
-			<tr>
-				<td>18.02.2021</td>
-				<td>Ulm - Berlin</td>
-				<td>N/A</td>
-				<td>621</td>
-			</tr>
-			<tr>
-				<td>22.02.2021</td>
-				<td>Mönchengladbach - Berlin</td>
-				<td>N/A</td>
-				<td>592</td>
-			</tr>
-			<tr>
-				<td>10.03.2021</td>
-				<td>Ketzin - Berlin</td>
-				<td>N/A</td>
-				<td>65</td>
-			</tr>
-			<tr>
-				<td>17.03.2021</td>
-				<td>Berlin - Köln - Gelsenkrichen - Berlin</td>
-				<td>N/A</td>
-				<td>1187</td>
-			</tr>
-			<tr>
-				<td>19.03.2021</td>
-				<td>Ulm - Berlin</td>
-				<td>N/A</td>
-				<td>621</td>
-			</tr>
-			<tr>
-				<td>22.03.2021</td>
-				<td>Regensburg - Berlin</td>
-				<td>N/A</td>
-				<td>488</td>
-			</tr>
-			<tr>
-				<td>23.03.2021</td>
-				<td>Regensburg - Berlin</td>
-				<td>N/A</td>
-				<td>488</td>
-			</tr>
-			<tr>
-				<td>24.03.2021</td>
-				<td>Berlin - Hanau - Berlin</td>
-				<td>N/A</td>
-				<td>1119</td>
-			</tr>
-			<tr>
-				<td>25.03.2021</td>
-				<td>Berlin - Fincken - Hamburg - Berlin</td>
-				<td>N/A</td>
-				<td>662</td>
-			</tr>
-			<tr>
-				<td>31.03.2021</td>
-				<td>Zülpich - Berlin</td>
-				<td>N/A</td>
-				<td>605</td>
-			</tr>
-			<tr>
-				<td>01.04.2021</td>
-				<td>Niederaula - Berlin</td>
-				<td>N/A</td>
-				<td>420</td>
-			</tr>
-			<tr>
-				<td>07.04.2021</td>
-				<td>Hanau - Berlin</td>
-				<td>N/A</td>
-				<td>533</td>
-			</tr>
-			<tr>
-				<td>09.04.2021</td>
-				<td>Kerpen - Frankfurt - Berlin</td>
-				<td>N/A</td>
-				<td>768</td>
-			</tr>
-			<tr>
-				<td>12.04.2021</td>
-				<td>Ulm - Berlin</td>
-				<td>N/A</td>
-				<td>579</td>
-			</tr>
-			<tr>
-				<td>14.04.2021</td>
-				<td>Berlin - Neubrandenburg</td>
-				<td>N/A</td>
-				<td>201</td>
-			</tr>
-			<tr>
-				<td>15.04.2021</td>
-				<td>Hemau - Berlin</td>
-				<td>N/A</td>
-				<td>482</td>
-			</tr>
-			<tr>
-				<td>19.04.2021</td>
-				<td>Mietersheim - Berlin</td>
-				<td>N/A</td>
-				<td>760</td>
-			</tr>
-			<tr>
-				<td>21.04.2021</td>
-				<td>Wegberg - Berlin</td>
-				<td>N/A</td>
-				<td>595</td>
-			</tr>
-			<tr>
-				<td>23.04.2021</td>
-				<td>Berlin - Aachen - Speyer - Berlin</td>
-				<td>N/A</td>
-				<td>1302</td>
-			</tr>
-			<tr>
-				<td>28.04.2021</td>
-				<td>Berlin- Rassnitz - Berlin</td>
-				<td>N/A</td>
-				<td>361</td>
-			</tr>
+				<div class="stat">
+					<div class="stat-figure text-accent">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="inline-block w-8 h-8 stroke-current">
+							<circle cx="12" cy="12" r="9" stroke-width="2"/>
+							<path d="M3 12h18" stroke-width="2" stroke-linecap="round"/>
+							<path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke-width="2" stroke-linecap="round"/>
+						</svg>
+					</div>
+					<div class="stat-title">Erdumrundungen</div>
+					<div id="valErdeUmfang" class="stat-value">0</div>
+					<div class="stat-desc">≈ km / 40.075</div>
+				</div>
+			</div>
+		</section>
 
-		</tbody>
-	</table>
+		<section id="tabelle" class="max-w-6xl mx-auto px-4 py-4 sm:py-6">
+			<div class="card bg-base-100 border border-base-200 shadow-xl">
+				<div class="card-body gap-6">
+					<div class="flex flex-col sm:flex-row gap-3 sm:items-center justify-between">
+						<h2 class="card-title">Fahrten</h2>
+						<label class="input input-bordered flex items-center gap-2 w-full sm:w-auto sm:min-w-[280px]">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 opacity-70"><path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 015.364 10.82l3.783 3.783a.75.75 0 11-1.06 1.06l-3.784-3.783A6.75 6.75 0 1110.5 3.75zm0 1.5a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5z" clip-rule="evenodd"/></svg>
+							<input id="search" type="text" class="grow" placeholder="Suche..." aria-label="Tabelle durchsuchen" />
+						</label>
+					</div>
 
-	<hr>
+					<div class="overflow-x-auto">
+						<table id="table" class="table table-zebra">
+							<thead>
+								<tr>
+									<th>Datum</th>
+									<th>Fahrtstrecke</th>
+									<th>KFZ</th>
+									<th class="text-right">Strecke (km)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>03.04.2020</td>
+									<td>Bad Camberg - Berlin</td>
+									<td>Skoda Yeti</td>
+									<td class="text-right">542</td>
+								</tr>
+								<tr>
+									<td>07.04.2020</td>
+									<td>Kirchheim unter Teck - Berlin</td>
+									<td>Jeep</td>
+									<td class="text-right">664</td>
+								</tr>
+								<tr>
+									<td>09.04.2020</td>
+									<td>Mühlheim am Main - Berlin</td>
+									<td>BMW 528i</td>
+									<td class="text-right">535</td>
+								</tr>
+								<tr>
+									<td>18.04.2020</td>
+									<td>Hanau - Berlin</td>
+									<td>Kia Sportage</td>
+									<td class="text-right">534</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
 
-	<div class="footer">
-		<p>Tamer Aktas | 2022 | Alle Rechte vorbehalten</p>
-	</div>
+		<footer class="footer grid grid-cols-1 justify-items-center items-center gap-y-1 p-4 md:p-6 bg-base-100 border-t border-base-200 md:relative">
+			<aside class="grid-flow-col items-center gap-2 md:absolute md:left-1/2 md:-translate-x-1/2 md:text-center">
+				<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+					<circle cx="12" cy="12" r="9" stroke-width="2"/>
+					<circle cx="12" cy="12" r="3" stroke-width="2"/>
+					<path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z" stroke-width="2"/>
+					<path d="M7 18l5-3 5 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				<p>&copy; <span id="year"></span> Tamer Aktas · Alle Rechte vorbehalten</p>
+			</aside>
+			<nav class="grid-flow-col gap-2 place-self-center col-span-full mt-1 md:mt-0 md:col-auto md:place-self-center md:justify-self-end">
+				<a href="#" class="link link-hover">Nach oben</a>
+			</nav>
+		</footer>
 
-	<script>
+		<script>
+			(function () {
+				const table = document.getElementById("table");
+				const search = document.getElementById("search");
+				const year = document.getElementById("year");
+				const valKM = document.getElementById("valKM");
+				const valFahrt = document.getElementById("valFahrt");
+				const valErde = document.getElementById("valErdeUmfang");
+				const themeToggle = document.getElementById("themeToggle");
 
-		var table = document.getElementById("table"), sumKM = 0, sumFahrt = 0;
+				// Footer year
+				year.textContent = new Date().getFullYear();
 
-		for (var i = 1; i < table.rows.length; i++) {
-			sumKM = sumKM + parseInt(table.rows[i].cells[3].innerHTML);
-			sumFahrt++;
-		}
+				// Theme: default to system preference and allow manual toggle
+				const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				function setTheme(dark) {
+					document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'emerald');
+					// update toggle visual
+					if (themeToggle) themeToggle.checked = dark;
+				}
+				// initialize
+				setTheme(prefersDark);
+				// listen to system changes
+				if (window.matchMedia) {
+					const mq = window.matchMedia('(prefers-color-scheme: dark)');
+					mq.addEventListener ? mq.addEventListener('change', (e) => setTheme(e.matches)) : mq.addListener && mq.addListener((e) => setTheme(e.matches));
+				}
+				// toggle handler
+				themeToggle?.addEventListener('change', (e) => setTheme(e.target.checked));
 
-		document.getElementById("valKM").innerHTML = "Gefahrene Kilometer: " + sumKM + " Kilometer";
-		document.getElementById("valFahrt").innerHTML = "Gefahrene Fahrten: " + sumFahrt;
-		//document.getElementById("valErdeUmfang").innerHTML = "Anzahl Erdumrundungen: " + Math.round((sumKM / 40075.017) * 100) / 100;
+				// Compute stats
+				function computeStats() {
+					let sumKM = 0;
+					let count = 0;
+					for (let i = 1; i < table.rows.length; i++) {
+						const kmCell = table.rows[i].cells[3];
+						if (!kmCell) continue;
+						// Skip filtered (hidden) rows
+						if (table.rows[i].style && table.rows[i].style.display === "none") continue;
+						const num = parseInt(kmCell.textContent.replace(/[^0-9-]/g, ""), 10);
+						if (!isNaN(num)) {
+							sumKM += num;
+							count++;
+						}
+					}
+					valKM.textContent = new Intl.NumberFormat("de-DE").format(sumKM) + " km";
+					valFahrt.textContent = count.toString();
+					valErde.textContent = (Math.round((sumKM / 40075.017) * 100) / 100).toString();
+				}
 
-	</script>
+				// Filter rows by search
+				function filterRows(q) {
+					const query = q.trim().toLowerCase();
+					for (let i = 1; i < table.rows.length; i++) {
+						const row = table.rows[i];
+						const text = row.textContent.toLowerCase();
+						row.style.display = text.includes(query) ? "" : "none";
+					}
+					computeStats();
+				}
 
-</body>
+				computeStats();
+				search?.addEventListener("input", (e) => filterRows(e.target.value));
+
+			})();
+		</script>
+	</body>
+	</html>
